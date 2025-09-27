@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriHealth Connect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span>AgriHealth Connect</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="showPage('community')">Community</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <div class="language-toggle">
+                    <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('hi')">हिं</button>
+                    <button class="lang-btn" onclick="setLanguage('mr')">मर</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-leaf"></i>
+                        <span data-translate="hero.badge">Smart Agriculture Revolution</span>
+                    </div>
+                    <h1 data-translate="hero.title">Transform Your Farm with AI Technology</h1>
+                    <p data-translate="hero.subtitle">Revolutionize your farming with instant crop disease diagnosis, soil health analysis, and expert community support - all powered by cutting-edge artificial intelligence.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button primary" onclick="showPage('dashboard')">
+                            <i class="fas fa-rocket"></i>
+                            <span data-translate="hero.getStarted">Get Started Free</span>
+                        </button>
+                        <button class="cta-button secondary" onclick="handleGoogleLogin()">
+                            <i class="fab fa-google"></i>
+                            <span data-translate="hero.googleLogin">Login with Google</span>
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label" data-translate="stats.farmers">Happy Farmers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label" data-translate="stats.accuracy">AI Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label" data-translate="stats.support">Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card crop-card">
+                        <i class="fas fa-camera"></i>
+                        <span>Crop Analysis</span>
+                    </div>
+                    <div class="floating-card soil-card">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>Soil Health</span>
+                    </div>
+                    <div class="floating-card community-card">
+                        <i class="fas fa-users"></i>
+                        <span>Community</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="section-header">
+                    <h2 data-translate="features.title">Powerful Features for Modern Farmers</h2>
+                    <p data-translate="features.subtitle">Everything you need to optimize your agricultural operations</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card enhanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 data-translate="features.cropDoctor.title">AI Crop Doctor</h3>
+                        <p data-translate="features.cropDoctor.description">Upload crop photos and get instant AI-powered disease diagnosis with 95% accuracy</p>
+                        <div class="feature-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Instant diagnosis in seconds</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Treatment recommendations</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Prevention strategies</span>
+                            </div>
+                        </div>
+                        <button class="feature-cta" onclick="showPage('dashboard')">Try Now</button>
+                    </div>
+
+                    <div class="feature-card enhanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 data-translate="features.soilHealth.title">Smart Soil Analysis</h3>
+                        <p data-translate="features.soilHealth.description">Comprehensive soil health analysis with personalized crop recommendations</p>
+                        <div class="feature-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>pH & nutrient analysis</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Crop suggestions</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Fertilizer recommendations</span>
+                            </div>
+                        </div>
+                        <button class="feature-cta" onclick="showPage('dashboard')">Analyze Soil</button>
+                    </div>
+
+                    <div class="feature-card enhanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3 data-translate="features.community.title">Expert Community</h3>
+                        <p data-translate="features.community.description">Connect with thousands of farmers and agricultural experts worldwide</p>
+                        <div class="feature-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Q&A with experts</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Knowledge sharing</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Local farming groups</span>
+                            </div>
+                        </div>
+                        <button class="feature-cta" onclick="showPage('community')">Join Community</button>
+                    </div>
+
+                    <div class="feature-card enhanced">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3 data-translate="features.alerts.title">Smart Alerts</h3>
+                        <p data-translate="features.alerts.description">Never miss important updates about weather, schemes, and farming schedules</p>
+                        <div class="feature-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Weather forecasts</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Government schemes</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Farming reminders</span>
+                            </div>
+                        </div>
+                        <button class="feature-cta" onclick="showPage('dashboard')">View Alerts</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="how-it-works">
+                <div class="section-header">
+                    <h2 data-translate="howItWorks.title">How It Works</h2>
+                    <p data-translate="howItWorks.subtitle">Get started in just 3 simple steps</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 data-translate="steps.upload.title">Upload Photos</h3>
+                        <p data-translate="steps.upload.description">Simply take a photo of your crop or enter soil parameters</p>
+                    </div>
+                    <div class="step-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 data-translate="steps.analyze.title">AI Analysis</h3>
+                        <p data-translate="steps.analyze.description">Our advanced AI analyzes your data in real-time</p>
+                    </div>
+                    <div class="step-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3 data-translate="steps.results.title">Get Results</h3>
+                        <p data-translate="steps.results.description">Receive detailed insights and actionable recommendations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials">
+                <div class="section-header">
+                    <h2 data-translate="testimonials.title">What Farmers Say</h2>
+                    <p data-translate="testimonials.subtitle">Real stories from real farmers</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"AgriHealth Connect saved my tomato crop! The AI detected early blight before I even noticed it."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <div class="author-name">Ramesh Kumar</div>
+                                <div class="author-location">Maharashtra, India</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"The soil analysis helped me choose the right crops. My yield increased by 40% this season!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <div class="author-name">Priya Sharma</div>
+                                <div class="author-location">Punjab, India</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"The community feature is amazing. I got expert advice from experienced farmers across India."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <div class="author-name">Suresh Patil</div>
+                                <div class="author-location">Karnataka, India</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2 data-translate="cta.title">Ready to Transform Your Farm?</h2>
+                    <p data-translate="cta.subtitle">Join thousands of farmers who are already using AI to boost their productivity</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary large" onclick="showPage('dashboard')">
+                            <i class="fas fa-rocket"></i>
+                            <span data-translate="cta.getStarted">Start Your Journey</span>
+                        </button>
+                        <button class="cta-button outline large" onclick="showPage('about')">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-translate="cta.learnMore">Learn More</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page">
+            <div class="page-header">
+                <h1 data-translate="dashboard.title">Farmer Dashboard</h1>
+                <p data-translate="dashboard.subtitle">Your AI-powered farming command center</p>
+            </div>
+            <div class="dashboard-grid">
+                <!-- Crop Doctor Section -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3 data-translate="dashboard.cropDoctor.title">AI Crop Doctor</h3>
+                            <p data-translate="dashboard.cropDoctor.subtitle">Instant disease diagnosis</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="dashboard.cropDoctor.uploadLabel">Upload Crop Photo</label>
+                        <div class="file-upload" onclick="document.getElementById('cropPhoto').click()" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
+                            <input type="file" id="cropPhoto" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+                            <div class="upload-content">
+                                <i class="fas fa-camera upload-icon"></i>
+                                <p data-translate="dashboard.cropDoctor.uploadText">Click or drag to upload crop photo</p>
+                                <span class="upload-hint">Supports JPG, PNG, HEIC formats</span>
+                            </div>
+                        </div>
+                        <div id="cropPreview" class="crop-preview"></div>
+                    </div>
+                    <button class="btn primary" onclick="diagnoseCrop()">
+                        <i class="fas fa-search"></i>
+                        <span data-translate="dashboard.cropDoctor.diagnose">Diagnose Crop</span>
+                    </button>
+                    <div id="cropResult" class="result-section"></div>
+                </div>
+
+                <!-- Soil Health Section -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3 data-translate="dashboard.soilHealth.title">Soil Health Analysis</h3>
+                            <p data-translate="dashboard.soilHealth.subtitle">Optimize your soil conditions</p>
+                        </div>
+                    </div>
+                    <form id="soilForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="dashboard.soilHealth.ph">Soil pH</label>
+                                <input type="number" id="soilPH" step="0.1" min="0" max="14" placeholder="6.5">
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="dashboard.soilHealth.moisture">Moisture Level (%)</label>
+                                <input type="number" id="moisture" min="0" max="100" placeholder="45">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="dashboard.soilHealth.fertility">Fertility Level</label>
+                            <select id="fertility">
+                                <option value="">Select Fertility Level</option>
+                                <option value="low" data-translate="dashboard.soilHealth.fertility.low">Low</option>
+                                <option value="medium" data-translate="dashboard.soilHealth.fertility.medium">Medium</option>
+                                <option value="high" data-translate="dashboard.soilHealth.fertility.high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="dashboard.soilHealth.location">Location</label>
+                            <input type="text" id="location" placeholder="Enter your location">
+                        </div>
+                        <button type="submit" class="btn primary">
+                            <i class="fas fa-analytics"></i>
+                            <span data-translate="dashboard.soilHealth.analyze">Analyze Soil</span>
+                        </button>
+                    </form>
+                    <div id="soilResult" class="result-section"></div>
+                </div>
+            </div>
+
+            <!-- Alerts Section -->
+            <div class="dashboard-card full-width" style="margin-top: 2rem;">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3 data-translate="dashboard.alerts.title">Smart Alerts</h3>
+                        <p data-translate="dashboard.alerts.subtitle">Stay updated with important notifications</p>
+                    </div>
+                </div>
+                <div id="alertsList" class="alerts-container"></div>
+            </div>
+        </div>
+
+        <!-- Community Page -->
+        <div id="community" class="page">
+            <div class="page-header">
+                <h1 data-translate="community.title">Farmer Community</h1>
+                <p data-translate="community.description">Connect, share knowledge, and grow together</p>
+            </div>
+
+            <div class="community-stats">
+                <div class="stat-card">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-label">Active Farmers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Questions Answered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Expert Contributors</div>
+                </div>
+            </div>
+
+            <div class="question-form">
+                <h3 data-translate="community.askQuestion">Ask a Question</h3>
+                <form id="questionForm">
+                    <div class="form-group">
+                        <label data-translate="community.questionTitle">Question Title</label>
+                        <input type="text" id="questionTitle" required placeholder="What's your farming question?">
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="community.questionDescription">Description</label>
+                        <textarea id="questionDescription" rows="4" required placeholder="Provide more details about your question..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-translate="community.category">Category</label>
+                            <select id="questionCategory">
+                                <option value="crops" data-translate="community.categories.crops">Crops</option>
+                                <option value="soil" data-translate="community.categories.soil">Soil</option>
+                                <option value="pests" data-translate="community.categories.pests">Pests & Disease</option>
+                                <option value="weather" data-translate="community.categories.weather">Weather</option>
+                                <option value="general" data-translate="community.categories.general">General</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-translate="community.postQuestion">Post Question</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="questions-list">
+                <div class="questions-header">
+                    <h3 data-translate="community.recentQuestions">Recent Questions</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterQuestions('all')">All</button>
+                        <button class="filter-btn" onclick="filterQuestions('crops')">Crops</button>
+                        <button class="filter-btn" onclick="filterQuestions('soil')">Soil</button>
+                        <button class="filter-btn" onclick="filterQuestions('pests')">Pests</button>
+                    </div>
+                </div>
+                <div id="questionsList"></div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <div class="about-content">
+                <div class="page-header centered">
+                    <h1 data-translate="about.title">About AgriHealth Connect</h1>
+                    <p data-translate="about.subtitle">Empowering farmers with AI-driven agricultural solutions</p>
+                </div>
+                
+                <section class="about-section">
+                    <div class="section-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h2 data-translate="about.problem.title">The Problem</h2>
+                    <p data-translate="about.problem.description">Farmers face numerous challenges including crop diseases, soil health issues, and lack of access to expert knowledge. Traditional methods of diagnosis are often slow, expensive, and not easily accessible to small-scale farmers.</p>
+                </section>
+
+                <section class="about-section">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2 data-translate="about.solution.title">Our Solution</h2>
+                    <p data-translate="about.solution.description">AgriHealth Connect leverages AI and machine learning to provide instant crop disease diagnosis through image recognition, soil health analysis, and connects farmers with a community platform for knowledge sharing.</p>
+                </section>
+
+                <section class="about-section">
+                    <div class="section-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h2 data-translate="about.features.title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="about-feature">
+                            <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+                            <h4>AI-Powered Diagnosis</h4>
+                            <p>Advanced image recognition for crop disease identification</p>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <h4>Soil Health Analysis</h4>
+                            <p>Comprehensive soil analysis with crop recommendations</p>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                            <h4>Multilingual Support</h4>
+                            <p>Available in English, Hindi, and Marathi</p>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon"><i class="fas fa-users"></i></div>
+                            <h4>Community Platform</h4>
+                            <p>Connect with fellow farmers and experts</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-section">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h2 data-translate="about.impact.title">Impact</h2>
+                    <p data-translate="about.impact.description">By providing accessible, AI-powered agricultural assistance, we aim to improve crop yields, reduce losses from diseases, and empower farmers with knowledge and community support.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-seedling"></i>
+                        <span>AgriHealth Connect</span>
+                    </div>
+                    <p>Empowering farmers with AI-driven agricultural solutions for a sustainable future.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('dashboard')">Dashboard</a></li>
+                        <li><a href="#" onclick="showPage('community')">Community</a></li>
+                        <li><a href="#" onclick="showPage('about')">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AgriHealth Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
